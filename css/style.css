@@ -1,0 +1,545 @@
+:root {
+  --bg-primary: #0A0A0A; /* Fundo mais escuro */
+  --bg-secondary: #1C1C1C; /* Fundo de containers */
+  --bg-tertiary: #282828; /* Fundo de seções/cards */
+  --text-primary: #EAEAEA; /* Texto principal claro */
+  --text-secondary: #B0B0B0; /* Texto secundário/rótulos */
+  --accent-color: #0e7ebf; /* Ciano vibrante para destaque */
+  --accent-dark: #006aa7; /* Ciano mais escuro para hover */
+  --positive-color: #4CAF50; /* Verde para resultados positivos */
+  --negative-color: #bc2a1f; /* Vermelho para resultados negativos */
+  --border-color: #3A3A3A; /* Cor de borda suave */
+  --input-bg: #222222; /* Fundo de inputs */
+  --input-border: #444444; /* Borda de inputs */
+  --shadow-dark: rgba(0, 0, 0, 0.6);
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --button-text: #FFFFFF;
+  --progress-bg: #404040;
+  --progress-complete: #4CAF50; /* Verde para progresso completo */
+  --progress-incomplete: #00BCD4; /* Ciano para progresso em andamento */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  background: var(--bg-secondary);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--shadow-dark);
+  border: 1px solid var(--border-color);
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: var(--accent-color);
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+}
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.7em;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px var(--shadow-dark);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+label {
+  display: block;
+  margin: 15px 0 8px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 0.95em;
+}
+input[type="number"],
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 12px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input[type="number"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.7);
+}
+.result {
+  background: var(--bg-tertiary);
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 30px;
+  box-shadow: 0 8px 20px var(--shadow-dark);
+  border: 1px solid var(--accent-color);
+}
+.result h2 {
+  color: var(--positive-color);
+  border-bottom-color: rgba(76, 175, 80, 0.3);
+}
+.result p {
+  font-size: 1.1em;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.result strong {
+  color: var(--positive-color);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+button {
+  margin: 8px 6px 6px 0;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent-color);
+  color: var(--button-text);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 10px var(--shadow-light);
+}
+button:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px var(--shadow-dark);
+}
+button:active {
+  background-color: #007A8A;
+  transform: translateY(0);
+  box-shadow: 0 2px 5px var(--shadow-light);
+}
+/* Estilo para o botão de lixeira */
+.delete-button {
+  background: var(--negative-color);
+}
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+.delete-button:active {
+  background-color: #c62828;
+}
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border-color);
+}
+.item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.item input[type="text"] { flex: 2; min-width: 150px; margin-bottom: 0; }
+.item input[type="number"] { flex: 1; min-width: 90px; margin-bottom: 0; }
+.parcelas-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 2;
+  min-width: 200px;
+}
+.parcelas-info input[type="number"] { width: 65px; text-align: center; }
+.parcelas-info span { font-weight: 500; color: var(--text-secondary); }
+
+/* Switch para "Considerar outros pagamentos" */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 28px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--input-border);
+  border-radius: 28px;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  transition: .4s;
+}
+input:checked + .slider { background-color: var(--positive-color); }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* Icons */
+.icon {
+  font-size: 1.2em;
+}
+
+/* File Input Styling */
+.import-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: var(--bg-tertiary);
+  border-radius: 10px;
+  box-shadow: inset 0 0 8px var(--shadow-dark);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.import-section h2 {
+  font-size: 1.4em;
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  flex-shrink: 0;
+}
+.import-section .file-input-wrapper {
+  margin-top: 0;
+  flex-grow: 1;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.file-input-wrapper input[type="file"] {
+  display: none;
+}
+.file-input-wrapper .custom-file-upload {
+  background-color: var(--input-bg);
+  color: var(--text-secondary);
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--input-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px var(--shadow-light);
+}
+.file-input-wrapper .custom-file-upload:hover {
+  background-color: #282828;
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 10px var(--shadow-dark);
+}
+.file-input-wrapper .file-name {
+  flex-grow: 1;
+  color: var(--text-secondary);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+  font-size: 0.9em;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  width: 100px;
+  height: 12px;
+  background-color: var(--progress-bg);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-left: 8px;
+}
+.progress-bar {
+  height: 100%;
+  background-color: var(--progress-incomplete);
+  border-radius: 6px;
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+.progress-bar.complete {
+  background-color: var(--progress-complete);
+}
+.progress-bar.overdue {
+  background-color: var(--negative-color);
+}
+
+
+@media(max-width: 768px) {
+  body { padding: 10px; }
+  .container { padding: 20px; border-radius: 12px; }
+  h1 { font-size: 2em; margin-bottom: 20px; }
+  h2 { font-size: 1.5em; margin-bottom: 12px; }
+  .section { padding: 15px; margin-bottom: 20px; border-radius: 10px; }
+  label { margin: 12px 0 6px; font-size: 0.9em; }
+  input[type="number"], input[type="text"] {
+    padding: 10px 8px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+  }
+  .result { padding: 20px; margin-top: 25px; border-radius: 10px; }
+  .result p { font-size: 1em; margin-bottom: 8px; }
+  .result strong { font-size: 1.1em; }
+  button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin: 6px 0;
+    gap: 8px;
+  }
+  .item { flex-direction: column; align-items: stretch; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; }
+  .item input, .parcelas-info { width: 100%; min-width: unset; }
+  .parcelas-info { justify-content: space-between; flex-direction: column; align-items: stretch; gap: 8px;}
+  .parcelas-info input[type="number"] { width: calc(100% - 16px); }
+  .parcelas-info > div { gap: 8px; }
+  .progress-bar-container { width: 100%; margin-left: 0; margin-top: 8px;}
+  .switch { width: 48px; height: 24px; }
+  .slider:before { height: 18px; width: 18px; }
+  input:checked + .slider:before { transform: translateX(20px); }
+  .icon { font-size: 1.1em; }
+
+  /* Mobile specific for import section */
+  .import-section {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+  .import-section h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+  }
+  .import-section .file-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .file-input-wrapper .custom-file-upload {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 15px;
+  }
+  .file-input-wrapper .file-name {
+    text-align: center;
+    margin-top: 5px;
+    padding-left: 0;
+    font-size: 0.85em;
+  }
+}
+
+/* Estilos para o botão flutuante de doação */
+.donate-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: var(--positive-color);
+  color: var(--button-text);
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.donate-button:hover {
+  background-color: #4CAF50;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+.donate-button:active {
+  background-color: #388E3C;
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para o Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+  background-color: var(--bg-secondary);
+  margin: auto;
+  padding: 30px;
+  border: 1px solid var(--accent-color);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 15px 40px var(--shadow-dark);
+  position: relative;
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  color: var(--accent-color);
+  font-size: 2em;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 188, 212, 0.3);
+  padding-bottom: 10px;
+}
+
+.modal-content p {
+  color: var(--text-secondary);
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+.pix-info {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.pix-qrcode {
+  width: 180px;
+  height: 180px;
+  border: 4px solid var(--accent-color);
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  padding: 5px;
+}
+
+.pix-info strong {
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.copy-pix-button {
+  background-color: var(--accent-color);
+  color: var(--button-text);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  border: none;
+  font-size: 1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.copy-pix-button:hover {
+  background-color: var(--accent-dark);
+}
+
+.close-button {
+  color: var(--text-secondary);
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--negative-color);
+  text-decoration: none;
+}
+
+.thank-you-message {
+    color: var(--positive-color);
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 25px;
+}
+
+/* Animação para o modal */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade para o modal */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.6em;
+  }
+
+  .modal-content p {
+    font-size: 1em;
+  }
+
+  .pix-qrcode {
+    width: 150px;
+    height: 150px;
+  }
+
+  .donate-button {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    font-size: 1em;
+  }
+}
