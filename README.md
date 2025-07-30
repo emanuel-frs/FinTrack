@@ -33,7 +33,6 @@ Este projeto foi construído com as bases da web (HTML, CSS, JavaScript) e refle
 
 1.  **Acesse o Site:** O FinTrack é um aplicativo web. Você pode acessá-lo diretamente pelo navegador:
     [**CLIQUE AQUI PARA ACESSAR O FINTRACK**](https://github.com/emanuel-frs/FinTrack.git)
-    *(Substitua `SEU_USUARIO` e `FinTrack` pelo caminho real do seu GitHub Pages)*
 
 2.  **Comece a Inserir Seus Dados:**
     * Preencha seu `Salário Recebido`, `Outros Pagamentos` e `Reserva para uso diário/emergências`.
